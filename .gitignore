@@ -7,3 +7,4 @@ bin/
 data/
 run/log/
 run/golang-framework
+build/golang-framework
