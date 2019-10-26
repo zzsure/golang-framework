@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  golang-framework:
+    image: zzsure/golang-framework:1.0.0
+    container_name: golang-framework-${USER}
+    network_mode: "host"
+    working_dir: /root/deploy/golang-framework
+    volumes:
+      - "/root/deploy/golang-framework/config.toml:/root/deploy/golang-framework/config.toml"
+    restart: always
+    entrypoint:
+      - /root/deploy/golang-framework/golang-framework
+      - server
+      - -c
+      - /root/deploy/golang-framework/config.toml

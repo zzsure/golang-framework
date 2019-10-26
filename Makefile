@@ -10,7 +10,7 @@ build:
 	go build -tags=jsoniter -x -o run/$(BIN) gitlab.azbit.cn/web/$(MAIN_PKG)
 
 dev:
- 	go run gitlab.azbit.cn/web/$(MAIN_PKG)/main.go $(ARG)
+	go run main.go $(ARG)
 
 run: build
 	cd run && ./$(BIN) $(ARG)
@@ -19,10 +19,11 @@ init:
 	cd run && TARGET='run' ARG='init' docker-compose run --rm golang-framework-devel
 
 docker-build:
-	cd run && \
-	TARGET='build' docker-compose run --rm golang-framework-devel && cp $(BIN) ../build/ && \
+	#cd run && \
+	#TARGET='build' ARG='server' docker-compose run --rm golang-framework-devel && cp $(BIN) ../build/ &&
+	cd run && cp $(BIN) ../build/ && \
 	cd ../build && \
 	docker build -t zzsure/golang-framework:$(TAG) . && \
-	docker push zzsure/golang-framework:$(TAG)j
+	docker push zzsure/golang-framework:$(TAG)
 
 .PHONY: build
