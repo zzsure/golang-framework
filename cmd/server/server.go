@@ -5,7 +5,6 @@ import (
 	"github.com/urfave/cli"
 	"gitlab.azbit.cn/web/golang-framework/conf"
 	"gitlab.azbit.cn/web/golang-framework/controller/v1"
-	"gitlab.azbit.cn/web/golang-framework/library/db"
 	"gitlab.azbit.cn/web/golang-framework/library/log"
 	"gitlab.azbit.cn/web/golang-framework/middleware"
 )
@@ -31,7 +30,7 @@ var Server = cli.Command{
 func run(c *cli.Context) {
 	conf.Init(c.String("conf"), c.String("args"))
 	log.Init()
-	db.Init()
+	//db.Init()
 
 	_ = GinEngine().Run(conf.Config.Server.Listen)
 }
