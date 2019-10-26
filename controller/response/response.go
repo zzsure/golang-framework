@@ -2,15 +2,16 @@ package response
 
 import (
 	"github.com/gin-gonic/gin"
+	"gitlab.azbit.cn/web/golang-framework/consts"
 )
 
 func Response(c *gin.Context, code int, msg string, data interface{}) {
-	requestId := c.MustGet("requestId")
+	requestID := c.MustGet(consts.REQUEST_ID_KEY)
 	c.JSON(200, map[string]interface{}{
-		"data":       data,
-		"error_no":   code,
-		"error_msg":  msg,
-		"request_id": requestId,
+		"data":                data,
+		"error_no":            code,
+		"error_msg":           msg,
+		consts.REQUEST_ID_KEY: requestID,
 	})
 }
 
@@ -25,4 +26,3 @@ func ServerErr(c *gin.Context, msg string) {
 func Success(c *gin.Context) {
 	Response(c, 0, "success", nil)
 }
-

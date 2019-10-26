@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/op/go-logging"
-	"gitlab.azbit.cn/web/bitcoin/conf"
+	"gitlab.azbit.cn/web/golang-framework/conf"
 	goLog "log"
 	"os"
 	"runtime"
@@ -17,7 +17,7 @@ type Event string
 type jsonLog struct{}
 
 type jsonLogData struct {
-	RequestID RequestID `json:"requestId"`
+	RequestID RequestID `json:"request_id"`
 	Module    string    `json:"module"`
 	Event     Event     `json:"event"`
 	Level     string    `json:"level"`
@@ -46,7 +46,7 @@ func (j *jsonLog) Log(level logging.Level, depth int, record *logging.Record) er
 	jl.Level = level.String()
 	jl.Idc = os.Getenv("AIBEE_KUBERNETES_IDC")
 	jlStr, _ := json.Marshal(jl)
-	os.Stdout.Write(append(jlStr, '\n'))
+	_, _ = os.Stdout.Write(append(jlStr, '\n'))
 
 	return nil
 }
@@ -91,4 +91,3 @@ func WrapError(err error) error {
 	_, file, line, _ := runtime.Caller(1)
 	return errors.New(fmt.Sprintf("%s:%d %s", file, line, err.Error()))
 }
-

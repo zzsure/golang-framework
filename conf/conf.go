@@ -1,8 +1,8 @@
 package conf
 
 import (
-	"gitlab.azbit.cn/web/bitcoin/library/util"
-    "github.com/koding/multiconfig"
+	"github.com/koding/multiconfig"
+	"gitlab.azbit.cn/web/golang-framework/library/util"
 	"strings"
 	"time"
 )
@@ -49,7 +49,6 @@ func Init(tomlPath, args string) {
 		&multiconfig.TagLoader{},
 		&multiconfig.TOMLLoader{Path: tomlPath},
 		&multiconfig.EnvironmentLoader{},
-		//&multiconfig.FlagLoader{RawArgs: args},
 	}
 	m := multiconfig.DefaultLoader{
 		Loader:    multiconfig.MultiLoader(loaders...),
@@ -63,5 +62,5 @@ func Init(tomlPath, args string) {
 		panic(err)
 	}
 
-	util.PrettyPrint(Config)
+	_ = util.PrettyPrint(Config)
 }

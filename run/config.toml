@@ -11,8 +11,8 @@ Secret = "U4LOTsSWEASOCXNl4lzyg0rOyGztm1so"
 
 [Database]
 HostPort = "tcp(127.0.0.1:3306)"
-UserPassword = "root:root654321"
-DB = "bitcoin"
+UserPassword = "root:password"
+DB = "golang_framework"
 [Database.Conn]
     MaxLifeTime = 600
     MaxIdle = 10
@@ -20,4 +20,3 @@ DB = "bitcoin"
 
 [Log]
 Type = "raw"
-

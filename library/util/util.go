@@ -3,7 +3,7 @@ package util
 import (
 	"encoding/json"
 	"fmt"
-	"gitlab.azbit.cn/web/bitcoin/library/util/net"
+	"gitlab.azbit.cn/web/golang-framework/library/util/net"
 )
 
 func GenServerUUID() string {
@@ -18,4 +18,3 @@ func PrettyPrint(v interface{}) (err error) {
 	}
 	return
 }
-

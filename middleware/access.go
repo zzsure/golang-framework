@@ -5,8 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/op/go-logging"
 	"github.com/satori/go.uuid"
-	"gitlab.azbit.cn/web/bitcoin/conf"
-	"gitlab.azbit.cn/web/bitcoin/library/log"
+	"gitlab.azbit.cn/web/golang-framework/conf"
+	"gitlab.azbit.cn/web/golang-framework/consts"
+	"gitlab.azbit.cn/web/golang-framework/library/log"
 	"net/http"
 	"os"
 	"time"
@@ -32,13 +33,13 @@ func Access(c *gin.Context) {
 				"path":      c.Request.URL.Path,
 			}
 			accessLogJson, _ := json.Marshal(accessLog)
-			os.Stdout.Write(append(accessLogJson, '\n'))
+			_, _ = os.Stdout.Write(append(accessLogJson, '\n'))
 		}()
 	}
 
 	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, conf.Config.Server.MaxHttpRequestBody*1024*1024)
 	requestID := uuid.NewV4().String()
-	c.Set("requestId", log.RequestID(requestID))
+	c.Set(consts.REQUEST_ID_KEY, log.RequestID(requestID))
 	c.Writer.Header().Set("Content-Type", "application/json")
 	c.Next()
 }

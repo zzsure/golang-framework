@@ -22,7 +22,7 @@ func Send(req *http.Request) ([]byte, error) {
 		return nil, err
 	}
 	body, err := ioutil.ReadAll(resp.Body)
-	resp.Body.Close()
+	_ = resp.Body.Close()
 	return body, err
 }
 
@@ -53,9 +53,8 @@ func WrapSignHeader(body []byte, key, secret string) http.Header {
 	header := make(http.Header)
 	ts := fmt.Sprintf("%d", time.Now().Unix())
 	sign := fmt.Sprintf("%x", sha1.Sum(append(body, []byte(ts+secret)...)))
-	header.Set("Aibee-Auth-ApiKey", key)
-	header.Set("Aibee-Auth-Timestamp", ts)
-	header.Set("Aibee-Auth-Sign", sign)
+	header.Set("Azbit-Auth-ApiKey", key)
+	header.Set("Azbit-Auth-Timestamp", ts)
+	header.Set("Azbit-Auth-Sign", sign)
 	return header
 }
-

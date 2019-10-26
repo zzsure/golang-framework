@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"gitlab.azbit.cn/web/bitcoin/conf"
+	"gitlab.azbit.cn/web/golang-framework/conf"
 	"time"
 )
 
@@ -25,4 +25,3 @@ func Init() {
 	DB.DB().SetMaxIdleConns(conf.Config.Database.Conn.MaxIdle)
 	DB.DB().SetMaxOpenConns(conf.Config.Database.Conn.MaxOpen)
 }
-

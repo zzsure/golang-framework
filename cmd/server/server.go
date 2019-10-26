@@ -3,17 +3,17 @@ package server
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/urfave/cli"
-	"gitlab.azbit.cn/web/bitcoin/conf"
-	"gitlab.azbit.cn/web/bitcoin/controller/v1"
-	"gitlab.azbit.cn/web/bitcoin/library/db"
-	"gitlab.azbit.cn/web/bitcoin/library/log"
-	"gitlab.azbit.cn/web/bitcoin/middleware"
+	"gitlab.azbit.cn/web/golang-framework/conf"
+	"gitlab.azbit.cn/web/golang-framework/controller/v1"
+	"gitlab.azbit.cn/web/golang-framework/library/db"
+	"gitlab.azbit.cn/web/golang-framework/library/log"
+	"gitlab.azbit.cn/web/golang-framework/middleware"
 )
 
 var Server = cli.Command{
-    Name: "server",
-    Usage: "bitcoin http server",
-    Flags: []cli.Flag{
+	Name:  "server",
+	Usage: "golang_framework http server",
+	Flags: []cli.Flag{
 		cli.StringFlag{
 			Name:  "conf, c",
 			Value: "config.toml",
@@ -22,7 +22,7 @@ var Server = cli.Command{
 		cli.StringFlag{
 			Name:  "args",
 			Value: "",
-			Usage: "multiconfig cmd line args",
+			Usage: "multi config cmd line args",
 		},
 	},
 	Action: run,
@@ -33,7 +33,7 @@ func run(c *cli.Context) {
 	log.Init()
 	db.Init()
 
-	GinEngine().Run(conf.Config.Server.Listen)
+	_ = GinEngine().Run(conf.Config.Server.Listen)
 }
 
 func GinEngine() *gin.Engine {
@@ -46,7 +46,7 @@ func GinEngine() *gin.Engine {
 		r = gin.Default()
 	}
 	r.Use(middleware.Access)
-    r.Use(middleware.Auth)
+	r.Use(middleware.Auth)
 	r.GET("/health")
 	V1(r)
 

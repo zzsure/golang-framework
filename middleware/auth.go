@@ -5,8 +5,9 @@ import (
 	"crypto/sha1"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"gitlab.azbit.cn/web/bitcoin/conf"
-	"gitlab.azbit.cn/web/bitcoin/controller/response"
+	"gitlab.azbit.cn/web/golang-framework/conf"
+	"gitlab.azbit.cn/web/golang-framework/consts"
+	"gitlab.azbit.cn/web/golang-framework/controller/response"
 	"io/ioutil"
 )
 
@@ -15,7 +16,7 @@ var whitePaths = map[string]struct{}{
 }
 
 func Auth(c *gin.Context) {
-	requestId := c.MustGet("requestId")
+	requestID := c.MustGet(consts.REQUEST_ID_KEY)
 	_, ok := whitePaths[c.Request.URL.Path]
 	if ok {
 		return
@@ -23,7 +24,7 @@ func Auth(c *gin.Context) {
 
 	reqBody, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
-		logger.Warning(requestId, err)
+		logger.Warning(requestID, err)
 		c.Abort()
 		response.ClientErr(c, "鉴权失败")
 		return
@@ -38,7 +39,7 @@ func Auth(c *gin.Context) {
 
 		apiSecret, ok := conf.Config.Auth.Account[apiKey]
 		if apiKey == "" || sign == "" || !ok {
-			logger.Warning(requestId, fmt.Sprintf("apiKey: %s, sign: %s", apiKey, sign))
+			logger.Warning(requestID, fmt.Sprintf("apiKey: %s, sign: %s", apiKey, sign))
 			c.Abort()
 			response.ClientErr(c, "鉴权失败")
 			return
@@ -47,7 +48,7 @@ func Auth(c *gin.Context) {
 		// 计算签名
 		genSign := fmt.Sprintf("%x", sha1.Sum(append(reqBody, []byte(ts+apiSecret)...)))
 		if genSign != sign {
-			logger.Warning(requestId, "want:", genSign, "get:", sign, string(reqBody), ts)
+			logger.Warning(requestID, "want:", genSign, "get:", sign, string(reqBody), ts)
 			c.Abort()
 			response.ClientErr(c, "鉴权失败")
 			return
@@ -59,4 +60,3 @@ func Auth(c *gin.Context) {
 
 	c.Next()
 }
-
