@@ -12,7 +12,7 @@ Secret = "U4LOTsSWEASOCXNl4lzyg0rOyGztm1so"
 [Database]
 HostPort = "tcp(127.0.0.1:3306)"
 UserPassword = "root:password"
-DB = "golang_golang-framework"
+DB = "golang_framework"
 [Database.Conn]
     MaxLifeTime = 600
     MaxIdle = 10

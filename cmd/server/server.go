@@ -11,7 +11,7 @@ import (
 
 var Server = cli.Command{
 	Name:  "server",
-	Usage: "golang_golang-framework http server",
+	Usage: "golang-framework http server",
 	Flags: []cli.Flag{
 		cli.StringFlag{
 			Name:  "conf, c",

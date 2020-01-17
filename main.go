@@ -9,7 +9,7 @@ import (
 
 func main() {
 	app := cli.NewApp()
-	app.Name = "golang-golang-framework"
+	app.Name = "golang-framework"
 	app.Commands = []cli.Command{
 		server.Server,
 		tool.InitDB,

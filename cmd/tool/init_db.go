@@ -10,7 +10,7 @@ import (
 
 var InitDB = cli.Command{
 	Name:  "init",
-	Usage: "golang_golang-framework init db",
+	Usage: "golang-framework init db",
 	Flags: []cli.Flag{
 		cli.StringFlag{
 			Name:  "conf, c",

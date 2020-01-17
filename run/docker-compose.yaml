@@ -1,9 +1,9 @@
 version: "3.3"
 
 services:
-  golang-golang-framework-devel:
+  golang-framework-devel:
     image: golang:latest
-    container_name: golang-golang-framework-devel-${USER}
+    container_name: golang-framework-devel-${USER}
     network_mode: "host"
     working_dir: /root/go/src/golang-framework
     volumes:
@@ -13,4 +13,4 @@ services:
     entrypoint:
       - bash
       - -c
-      - make ${TARGET:-dev} MAIN_PKG=${MAIN_PKG:-golang-golang-framework} ARG='${ARG}'
+      - make ${TARGET:-dev} MAIN_PKG=${MAIN_PKG:-golang-framework} ARG='${ARG}'
