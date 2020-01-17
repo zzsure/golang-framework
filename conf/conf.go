@@ -2,7 +2,7 @@ package conf
 
 import (
 	"github.com/koding/multiconfig"
-	"gitlab.azbit.cn/web/golang-framework/library/util"
+	"golang-framework/library/util"
 	"strings"
 	"time"
 )

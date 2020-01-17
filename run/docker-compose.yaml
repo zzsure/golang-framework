@@ -1,16 +1,16 @@
 version: "3.3"
 
 services:
-  golang-framework-devel:
+  golang-golang-framework-devel:
     image: golang:latest
-    container_name: golang-framework-devel-${USER}
+    container_name: golang-golang-framework-devel-${USER}
     network_mode: "host"
-    working_dir: /root/go/src/gitlab.azbit.cn/web/golang-framework
+    working_dir: /root/go/src/golang-framework
     volumes:
-      - "../:/root/go/src/gitlab.azbit.cn/web/golang-framework"
+      - "../:/root/go/src/golang-framework"
     environment:
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/go/bin
     entrypoint:
       - bash
       - -c
-      - make ${TARGET:-dev} MAIN_PKG=${MAIN_PKG:-golang-framework} ARG='${ARG}'
+      - make ${TARGET:-dev} MAIN_PKG=${MAIN_PKG:-golang-golang-framework} ARG='${ARG}'

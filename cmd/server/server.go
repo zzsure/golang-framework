@@ -3,15 +3,15 @@ package server
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/urfave/cli"
-	"gitlab.azbit.cn/web/golang-framework/conf"
-	"gitlab.azbit.cn/web/golang-framework/controller/v1"
-	"gitlab.azbit.cn/web/golang-framework/library/log"
-	"gitlab.azbit.cn/web/golang-framework/middleware"
+	"golang-framework/conf"
+	"golang-framework/controller/v1"
+	"golang-framework/library/log"
+	"golang-framework/middleware"
 )
 
 var Server = cli.Command{
 	Name:  "server",
-	Usage: "golang_framework http server",
+	Usage: "golang_golang-framework http server",
 	Flags: []cli.Flag{
 		cli.StringFlag{
 			Name:  "conf, c",

@@ -1,0 +1,38 @@
+settings:
+  legacy:
+    force: false
+    interval: 0s
+schema:
+- name: golang-framework
+  path: .
+  env:
+    ARG: server
+  commands:
+    install:
+      status: true
+      method: go build -o ./golang-framework -mod=vendor
+    run:
+      status: true
+      method: ./golang-framework
+      args:
+        - server
+  args:
+    - server
+    - --conf=./run/config.toml
+  watcher:
+    extensions:
+    - go
+    - toml
+    paths:
+    - /
+    ignore:
+      paths:
+        - .git
+        - .realize
+        - vendor
+        - static
+        - test
+        - log
+        - asset
+        - redis
+        - doc

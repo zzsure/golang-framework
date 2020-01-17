@@ -1,10 +1,10 @@
 .idea
 .vscode/
 .DS_Store
-golang-framework
+golang-golang-framework
 log/
 bin/
 data/
 run/log/
-run/golang-framework
-build/golang-framework
+run/golang-golang-framework
+build/golang-golang-framework

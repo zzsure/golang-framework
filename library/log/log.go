@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/op/go-logging"
-	"gitlab.azbit.cn/web/golang-framework/conf"
+	"golang-framework/conf"
 	goLog "log"
 	"os"
 	"runtime"

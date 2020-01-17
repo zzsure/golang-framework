@@ -5,9 +5,9 @@ import (
 	"crypto/sha1"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"gitlab.azbit.cn/web/golang-framework/conf"
-	"gitlab.azbit.cn/web/golang-framework/consts"
-	"gitlab.azbit.cn/web/golang-framework/controller/response"
+	"golang-framework/conf"
+	"golang-framework/consts"
+	"golang-framework/controller/response"
 	"io/ioutil"
 )
 

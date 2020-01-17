@@ -1,7 +1,7 @@
-# golang-framework
-golang framework
+# golang-golang-framework
+golang golang-framework
 
-1. sed -i 's/golang-framework/facebook-spider/g' `grep 'golang-framework' -rl ./`
-2. sed -i 's/golang-framework/facebook_spider/g' `grep 'golang_framework' -rl ./`
-3. dep ensure -v
-4. go run main.go server
+1. sed -i 's/golang-framework/your-project/g' `grep 'golang-framework' -rl ./`
+2. go mod tidy
+3. go mod vendor
+4. realize start

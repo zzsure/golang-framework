@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"gitlab.azbit.cn/web/golang-framework/conf"
+	"golang-framework/conf"
 	"time"
 )
 

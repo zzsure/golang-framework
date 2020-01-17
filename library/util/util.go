@@ -3,7 +3,7 @@ package util
 import (
 	"encoding/json"
 	"fmt"
-	"gitlab.azbit.cn/web/golang-framework/library/util/net"
+	"golang-framework/library/util/net"
 )
 
 func GenServerUUID() string {
